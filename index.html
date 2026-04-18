@@ -3,39 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>조성민 & 김수정 결혼합니다</title>
+    <title>조성민 & 김수정 결혼식에 초대합니다</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Malgun Gothic', sans-serif; text-align: center; background-color: #f4f4f4; color: #333; margin: 0; padding: 0; }
-        .wrap { max-width: 480px; margin: 0 auto; background: white; padding-bottom: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .header { padding: 60px 20px; background-color: #fff9f9; }
-        .header h1 { font-size: 26px; color: #d68585; margin-bottom: 15px; letter-spacing: 2px; }
-        .header p { font-size: 16px; color: #888; }
-        .photo { width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; background-color: #eaeaea; color: #888; font-size: 14px; }
-        .content { padding: 50px 20px; line-height: 2; font-size: 15px; }
-        .date-location { margin-top: 20px; padding: 30px 20px; background-color: #fafafa; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
-        .date-location p { margin: 8px 0; font-size: 18px; font-weight: bold; color: #444; }
+        body {
+            font-family: 'Gowun Dodum', sans-serif; /* 부드럽고 고급스러운 명조/고딕 느낌의 폰트 */
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 1.8;
+        }
+        /* 청첩장 전체 틀 */
+        .wrap {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        /* 구역 나누기 */
+        .section {
+            padding: 60px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        /* 메인 타이틀 구역 */
+        .header {
+            padding: 80px 20px;
+            background-color: #fdfaf6; /* 아주 연한 베이지 톤 */
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #b08968; /* 우아한 브라운 톤 */
+            font-weight: normal;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            font-size: 15px;
+            color: #777;
+        }
+        /* 사진 들어갈 자리 (임시 배경색 처리) */
+        .photo-area {
+            width: 100%;
+            height: 500px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        /* 사진이 업로드되면 이 코드가 작동합니다 */
+        .photo-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* 제목 텍스트 */
+        h2 {
+            font-size: 20px;
+            color: #b08968;
+            font-weight: normal;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        /* 혼주 정보 */
+        .parents-info {
+            font-size: 16px;
+            margin-top: 40px;
+        }
+        .parents-info span {
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        /* 달력 스타일 */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            max-width: 300px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+        .cal-head { color: #999; font-size: 13px; }
+        .cal-day { padding: 10px 0; }
+        .sun { color: #e74c3c; }
+        .sat { color: #3498db; }
+        .empty { color: transparent; }
+        .d-day {
+            background-color: #b08968;
+            color: white !important;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        /* 버튼 스타일 */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px 5px;
+            background-color: #f8f9fa;
+            color: #333;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .btn:hover { background-color: #f1f3f5; }
+        
+        /* 계좌번호 박스 */
+        .account-box {
+            background-color: #fdfaf6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+        .account-box strong { color: #b08968; font-size: 16px; }
+        .account-row {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e2e2e2;
+        }
     </style>
 </head>
 <body>
-    <div class="wrap">
-        <div class="header">
-            <h1>조성민 ❤️ 김수정</h1>
-            <p>저희 결혼식에 초대합니다</p>
-        </div>
+
+<div class="wrap">
+    
+    <div class="header">
+        <h1>조성민 & 김수정</h1>
+        <p class="subtitle">저희 결혼합니다</p>
+        <p style="margin-top: 30px; font-size: 16px;">
+            2026년 7월 4일 토요일 낮 12시<br>
+            하우스오브더라움 (건대)
+        </p>
+    </div>
+
+    <div class="photo-area">
+        사진이 들어갈 자리입니다
+    </div>
+
+    <div class="section">
+        <h2>초대합니다</h2>
+        <p>
+            서로가 마주 보며 다져온 사랑을<br>
+            이제 함께 한 곳을 바라보며 걸어갈 수 있는<br>
+            큰 사랑으로 키우고자 합니다.<br><br>
+            저희 두 사람이 사랑의 이름으로 지켜나갈 수 있게<br>
+            앞날을 축복해 주시면 감사하겠습니다.
+        </p>
         
-        <div class="photo">
-            여기에 두 분의 예쁜 웨딩 사진이 들어갑니다
-        </div>
-
-        <div class="content">
-            <p>6년이 넘는 시간 동안<br>변함없이 서로의 곁을 지켜온 저희 두 사람이<br>이제 평생을 함께하려 합니다.</p>
-            <p>바쁘시더라도 참석해 주셔서<br>저희의 앞날을 축복해 주시면<br>더없는 기쁨이 되겠습니다.</p>
-        </div>
-
-        <div class="date-location">
-            <p>2026년 O월 O일 토요일 오후 1시</p>
-            <p>OO 웨딩홀 OO층 OO홀</p>
+        <div class="parents-info">
+            조윤형 · 문정희 의 아들 <span>조성민</span><br>
+            김원영 · 백경희 의 딸 <span>김수정</span>
         </div>
     </div>
-</body>
-</html>
+
+    <div class="section">
+        <h2>2026. 07. 04</h2>
+        <div class="calendar">
+            <div class="cal-head sun">일</div>
+            <div class="cal-head">월</div>
+            <div class="cal-head">화</div>
+            <div class="cal-head">수</div>
+            <div class="cal-head">목</div>
+            <div class="cal-head">금</div>
+            <div class="cal-head sat">토</div>
+
+            <div class="empty"></div><div class="empty"></div><div class="empty"></div>
+            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day sat d-day">4</div>
+            <div class="cal-day sun">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day sat">11</div>
+            <div class="cal-day sun">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day sat">18</div>
+            <div class="cal-day sun">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day sat">25</div>
+            <div class="cal-day sun">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div><div class="empty"></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>오시는 길</h2>
+        <p style="font-weight: bold; font-size: 18px;">하우스오브더라움 (건대)</p>
+        <p style="font-size: 14px; color: #777;">서울특별시 광진구 (상세주소 입력)</p>
+        
+        <div style="margin-top: 20px;">
+            <a href="#" class="btn">네이버 지도</a>
+            <a href="#" class="btn">카카오 맵</a>
+        </div>
+    </div>
+
+    <div class="section" style="border-bottom: none;">
+        <h2>마음 전하실 곳</h2>
+        <p style="font-size: 14px; margin-bottom: 30px;">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.</p>
+
+        <div class="account-box">
+            <strong>신랑측 계좌</strong>
+            <div class="account-row">
+                하나은행 374-910025-96807 (조윤형)<br>
+                카카오뱅크 3333-34-4275498 (문정희)<br>
+                카카오뱅크 3333-24-2780476 (조성민)
+            </div>
+        </div>
+
+        <div class="account-box">
+            <strong>신부측 계좌</strong>
+            <div class="account-row">
+                NH농협 302-0859-9890-91 (김원영)<br>
+                NH농협 302-1430-0848-21 (백경희)<br>
+                NH농협 302-0884-0299-41 (김수정)
+            </div>
