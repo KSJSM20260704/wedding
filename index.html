@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Gowun Dodum', sans-serif; /* 부드럽고 고급스러운 명조/고딕 느낌의 폰트 */
+            font-family: 'Gowun Dodum', sans-serif;
             background-color: #f7f7f7;
             color: #333;
             margin: 0;
@@ -15,7 +15,7 @@
             text-align: center;
             line-height: 1.8;
         }
-        /* 청첩장 전체 틀 */
+        /* 청첩장 전체 크기 및 배경 */
         .wrap {
             max-width: 480px;
             margin: 0 auto;
@@ -23,15 +23,13 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             overflow: hidden;
         }
-        /* 구역 나누기 */
         .section {
             padding: 60px 20px;
             border-bottom: 1px solid #f0f0f0;
         }
-        /* 메인 타이틀 구역 */
         .header {
             padding: 80px 20px;
-            background-color: #fdfaf6; /* 아주 연한 베이지 톤 */
+            background-color: #fdfaf6;
         }
         .header h1 {
             font-size: 28px;
@@ -40,28 +38,7 @@
             margin-bottom: 10px;
             letter-spacing: 2px;
         }
-        .header .subtitle {
-            font-size: 15px;
-            color: #777;
-        }
-        /* 사진 들어갈 자리 (임시 배경색 처리) */
-        .photo-area {
-            width: 100%;
-            height: 500px;
-            background-color: #e9ecef;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #adb5bd;
-            font-size: 14px;
-        }
-        /* 사진이 업로드되면 이 코드가 작동합니다 */
-        .photo-area img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        /* 제목 텍스트 */
+        .subtitle { font-size: 15px; color: #777; }
         h2 {
             font-size: 20px;
             color: #b08968;
@@ -69,16 +46,23 @@
             margin-bottom: 30px;
             letter-spacing: 1px;
         }
+        
+        /* 메인 사진 영역 */
+        .photo-area {
+            width: 100%;
+            height: 450px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
         /* 혼주 정보 */
-        .parents-info {
-            font-size: 16px;
-            margin-top: 40px;
-        }
-        .parents-info span {
-            font-size: 18px;
-            font-weight: bold;
-            margin-left: 10px;
-        }
+        .parents-info { margin-top: 40px; font-size: 16px; line-height: 2.2; }
+        .parents-info span { font-size: 18px; font-weight: bold; margin-left: 10px; }
+
         /* 달력 스타일 */
         .calendar {
             display: grid;
@@ -99,22 +83,22 @@
             border-radius: 50%;
             font-weight: bold;
         }
-        /* 버튼 스타일 */
+
+        /* 지도 버튼 */
         .btn {
             display: inline-block;
             padding: 12px 24px;
             margin: 10px 5px;
-            background-color: #f8f9fa;
-            color: #333;
             text-decoration: none;
             border-radius: 25px;
-            border: 1px solid #ddd;
             font-size: 14px;
+            font-weight: bold;
             transition: all 0.2s;
         }
-        .btn:hover { background-color: #f1f3f5; }
-        
-        /* 계좌번호 박스 */
+        .btn-naver { background-color: #03C75A; color: white; }
+        .btn-kakao { background-color: #FEE500; color: #333; }
+
+        /* 마음 전하실 곳 (계좌) */
         .account-box {
             background-color: #fdfaf6;
             padding: 20px;
@@ -125,16 +109,27 @@
         }
         .account-box strong { color: #b08968; font-size: 16px; }
         .account-row {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed #e2e2e2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e2e2e2;
+        }
+        .account-row:last-child { border-bottom: none; }
+        .copy-btn {
+            background-color: #b08968;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
 <div class="wrap">
-    
     <div class="header">
         <h1>조성민 & 김수정</h1>
         <p class="subtitle">저희 결혼합니다</p>
@@ -145,7 +140,7 @@
     </div>
 
     <div class="photo-area">
-        사진이 들어갈 자리입니다
+        이곳에 웨딩 사진이 들어갑니다<br>(아직 사진이 없어 회색으로 보입니다)
     </div>
 
     <div class="section">
@@ -186,12 +181,12 @@
 
     <div class="section">
         <h2>오시는 길</h2>
-        <p style="font-weight: bold; font-size: 18px;">하우스오브더라움 (건대)</p>
-        <p style="font-size: 14px; color: #777;">서울특별시 광진구 (상세주소 입력)</p>
+        <p style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">하우스오브더라움</p>
+        <p style="font-size: 14px; color: #777; margin-bottom: 25px;">건대 (상세 주소를 확인해 주세요)</p>
         
-        <div style="margin-top: 20px;">
-            <a href="#" class="btn">네이버 지도</a>
-            <a href="#" class="btn">카카오 맵</a>
+        <div>
+            <a href="https://map.naver.com/v5/search/하우스오브더라움" target="_blank" class="btn btn-naver">네이버 지도</a>
+            <a href="https://map.kakao.com/link/search/하우스오브더라움" target="_blank" class="btn btn-kakao">카카오 맵</a>
         </div>
     </div>
 
@@ -202,16 +197,21 @@
         <div class="account-box">
             <strong>신랑측 계좌</strong>
             <div class="account-row">
-                하나은행 374-910025-96807 (조윤형)<br>
-                카카오뱅크 3333-34-4275498 (문정희)<br>
-                카카오뱅크 3333-24-2780476 (조성민)
+                <div>아버지 조윤형<br><span style="color:#777;">은행명 000-000-000000</span></div>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText('000-000-000000'); alert('조윤형 님의 계좌번호가 복사되었습니다.');">복사</button>
+            </div>
+            <div class="account-row">
+                <div>어머니 문정희<br><span style="color:#777;">은행명 000-000-000000</span></div>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText('000-000-000000'); alert('문정희 님의 계좌번호가 복사되었습니다.');">복사</button>
+            </div>
+            <div class="account-row">
+                <div>신랑 조성민<br><span style="color:#777;">은행명 000-000-000000</span></div>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText('000-000-000000'); alert('조성민 님의 계좌번호가 복사되었습니다.');">복사</button>
             </div>
         </div>
 
         <div class="account-box">
             <strong>신부측 계좌</strong>
             <div class="account-row">
-                NH농협 302-0859-9890-91 (김원영)<br>
-                NH농협 302-1430-0848-21 (백경희)<br>
-                NH농협 302-0884-0299-41 (김수정)
-            </div>
+                <div>아버지 김원영<br><span style="color:#777;">은행명 000-000-000000</span></div>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText('000-000-000000'); alert('김원영 님의 계
