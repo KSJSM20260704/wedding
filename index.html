@@ -74,11 +74,12 @@
         }
         .cover-content {
             position: absolute;
-            top: 4%;
+            top: 1.5%; /* 얼굴을 가리지 않도록 맨 위로 바짝 올림 */
             left: 0; width: 100%;
             z-index: 10;
             color: #ffffff;
             text-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+            padding-top: 15px; /* 상단 여백 약간 추가 */
         }
         .cover-korean { font-size: 19px; font-weight: 500; letter-spacing: 2px; margin-bottom: 15px; }
         .cover-main-title { font-family: 'Cormorant Garamond', serif; font-size: 52px; line-height: 1.1; font-weight: 600; margin-bottom: 20px; letter-spacing: -2px; }
@@ -98,10 +99,31 @@
         .grid-item { position: relative; width: 100%; aspect-ratio: 1 / 1; background-color: #f5f5f5; cursor: pointer; overflow: hidden; }
         .grid-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; }
+        /* 라이트박스 크게 보기 */
+        #lightbox { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.95); z-index: 10000; 
+        }
         .lb-swiper { width: 100%; height: 100%; }
-        .lb-swiper .swiper-slide img { max-width: 95%; max-height: 90%; object-fit: contain; }
-        .close-lb { position: absolute; top: 20px; right: 25px; font-size: 35px; color: #fff; background: transparent; border: none; z-index: 10010; }
+        
+        /* 라이트박스 사진 중앙 정렬 완벽 세팅 */
+        .lb-swiper .swiper-slide { 
+            display: flex; align-items: center; justify-content: center; height: 100vh; 
+        }
+        .lb-swiper .swiper-slide img { 
+            max-width: 100%; max-height: 80vh; object-fit: contain; margin: auto; 
+        }
+        
+        /* 사진 카운터(숫자) 스타일 */
+        .swiper-pagination-fraction {
+            color: #ffffff;
+            font-size: 16px;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 2px;
+            bottom: 30px;
+        }
+
+        .close-lb { position: absolute; top: 20px; right: 25px; font-size: 35px; color: #fff; background: transparent; border: none; z-index: 10010; cursor: pointer; }
 
         /* --- 4. WEDDING DAY --- */
         .cal-head-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; max-width: 320px; margin: 0 auto 10px auto; border-bottom: 1px solid var(--line-color); padding-bottom: 10px; font-size: 12px; color: #999; font-weight: bold; }
@@ -111,10 +133,7 @@
 
         /* --- 5. 오시는 길 & 로고 --- */
         .bar-title {
-            font-size: 19px;
-            font-weight: 600;
-            color: var(--text-color);
-            margin: 20px 0 15px 0;
+            font-size: 19px; font-weight: 600; color: var(--text-color); margin: 20px 0 15px 0;
             display: flex; align-items: center; justify-content: center; gap: 12px;
         }
         .bar-title::before, .bar-title::after { content: ''; width: 1px; height: 14px; background-color: var(--point-color); }
@@ -131,7 +150,6 @@
             color: #333; text-decoration: none; font-size: 14px; font-weight: 500;
             display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px;
         }
-        /* 앱 로고 디자인 */
         .logo-box { width: 22px; height: 22px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; }
         .naver-logo { background-color: var(--naver-green); color: #fff; }
         .kakao-logo { background-color: var(--kakao-yellow); color: #3A1D1D; }
@@ -141,7 +159,7 @@
         .notice-item p { margin-top: 15px; font-size: 14.5px; color: #555; line-height: 1.9; font-weight: 400; }
         .notice-item .bar-title { font-size: 18px; color: #000; }
 
-        /* --- 7. 계좌번호 (수직 라인 정밀 정렬) --- */
+        /* --- 7. 계좌번호 --- */
         .acc-box { text-align: center; margin-bottom: 40px; padding: 0 10px; }
         .acc-title { display: inline-block; font-size: 16px; color: var(--point-color); border-bottom: 1px solid var(--line-color); padding-bottom: 12px; margin-bottom: 30px; font-weight: 500; width: 100%; }
         
@@ -150,16 +168,11 @@
             margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #f9f9f9;
         }
         
-        /* 라벨 박스: 신 랑 vs 아 버 지 라인 맞춤 */
         .acc-label {
             width: 55px; display: flex; justify-content: space-between;
             font-size: 14px; color: #666; flex-shrink: 0; margin-right: 10px;
         }
-        
-        /* 이름 박스: 수직 라인 고정 */
         .acc-name { width: 50px; font-size: 15px; font-weight: 500; text-align: left; flex-shrink: 0; }
-        
-        /* 계좌번호 박스: 가운데 배치 유도 */
         .acc-num { 
             flex-grow: 1; text-align: center; font-size: 13.5px; color: #777; 
             font-family: sans-serif; letter-spacing: -0.2px; padding: 0 5px;
@@ -220,7 +233,7 @@
     </div>
 
     <div id="lightbox">
-        <button class="close-lb" onclick="closeLightbox()">&times;</button>
+        <button class="close-lb" onclick="closeLightboxManual()">&times;</button>
         <div class="swiper lb-swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="1.jpg"></div>
@@ -296,7 +309,7 @@
     <div class="sec fade-up" style="padding-bottom: 120px;">
         <div class="sec-title">Registry</div>
         <p style="font-size: 14px; margin-bottom: 50px; color: #555;">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.</p>
-        
+
         <div class="acc-box">
             <div class="acc-title">신랑측 계좌</div>
             <div class="acc-row">
@@ -347,29 +360,58 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+    // 라이트박스 스와이퍼 설정 (카운터 추가)
     var lbSwiper = new Swiper(".lb-swiper", {
-        loop: true, speed: 400, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-        pagination: { el: ".swiper-pagination", clickable: true },
+        loop: true, speed: 400, 
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        pagination: { el: ".swiper-pagination", type: "fraction" }, // 분수(숫자) 형태로 변경
     });
+
+    // 뒤로가기 버튼 연동을 위한 함수
     function openLightbox(index) {
         document.getElementById("lightbox").style.display = "flex";
         lbSwiper.slideToLoop(index, 0);
         document.body.style.overflow = "hidden";
+        // 브라우저 뒤로가기 기록 덮어쓰기 (가짜 기록 생성)
+        history.pushState({ lightboxOpen: true }, null, "");
     }
+
+    // 뒤로가기 또는 닫기 버튼 눌렀을 때 실행
     function closeLightbox() {
         document.getElementById("lightbox").style.display = "none";
         document.body.style.overflow = "auto";
     }
+
+    // X 버튼을 눌렀을 때 뒤로가기 실행 (popstate 유도)
+    function closeLightboxManual() {
+        if(document.getElementById("lightbox").style.display === "flex") {
+            history.back();
+        }
+    }
+
+    // 스마트폰 진짜 '뒤로 가기' 눌렀을 때 감지
+    window.addEventListener("popstate", function(event) {
+        if (document.getElementById("lightbox").style.display === "flex") {
+            closeLightbox();
+        }
+    });
+
     document.addEventListener("DOMContentLoaded", function() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        
         document.querySelectorAll("#galleryGrid .grid-item").forEach(item => {
             item.addEventListener("click", function() { openLightbox(parseInt(this.getAttribute("data-index"))); });
         });
-        document.getElementById("lightbox").addEventListener("click", function(e) { if (e.target === this) closeLightbox(); });
+        
+        // 검은 배경 클릭 시 닫기
+        document.getElementById("lightbox").addEventListener("click", function(e) { 
+            if (e.target === this) closeLightboxManual(); 
+        });
     });
+
     function copyToClipboard(val, name) {
         var t = document.createElement("textarea"); document.body.appendChild(t); t.value = val; t.select();
         document.execCommand('copy'); document.body.removeChild(t);
